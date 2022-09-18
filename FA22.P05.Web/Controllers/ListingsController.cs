@@ -60,9 +60,15 @@ namespace FA22.P05.Web.Controllers
             {
                 Name = dto.Name!,
                 Description = dto.Description,
-                Price = dto.Price!.Value,
+                Price = dto.Price,
+                Country = dto.Country,
+                Condition = dto.Condition,
+                Publisher = dto.Publisher,
+                Version = dto.Version,
+                Language = dto.Language,
                 StartUtc = dto.StartUtc!.Value,
                 EndUtc = dto.EndUtc!.Value,
+                Year = dto.Year,
                 OwnerId = User.GetCurrentUserId() ?? throw new Exception("Missing user id")
             };
             listings.Add(listing);
