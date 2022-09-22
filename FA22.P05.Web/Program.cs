@@ -56,7 +56,22 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // maps the URLs on controllers to the methods on those classes
-app.MapControllers();
+app.UseRouting();
+app.UseEndpoints(routeBuilder =>
+{
+    routeBuilder.MapControllers();
+});
+
+app.UseStaticFiles();
+app.UseSpa(spaBuilder =>
+{
+    spaBuilder.Options.SourcePath = "ClientApp";
+    if (app.Environment.IsDevelopment())
+    {
+        spaBuilder.UseProxyToSpaDevelopmentServer("https://localhost:3000/");
+    }
+});
+
 
 app.Run();
 
