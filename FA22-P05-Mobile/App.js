@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-
+import { Appbar } from "react-native-paper";
+import { MobileAppBar } from './Components/MobileAppBar';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
+     <MobileAppBar/>
+      <Text>TOCO</Text>
     </View>
   );
 }
