@@ -53,10 +53,11 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
+app.UseRouting();
 app.UseAuthorization();
 
 // maps the URLs on controllers to the methods on those classes
-app.UseRouting();
+
 app.UseEndpoints(routeBuilder =>
 {
     routeBuilder.MapControllers();
