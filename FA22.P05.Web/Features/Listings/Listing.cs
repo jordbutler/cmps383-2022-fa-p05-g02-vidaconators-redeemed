@@ -16,7 +16,7 @@ public class Listing
     public string? Country { get; set; }
     public string? Language { get; set; }
     public int Year { get; set; }
-    public string? Condition { get; set; }
+    //public string? Condition { get; set; }
     public DateTimeOffset StartUtc { get; set; }
     public DateTimeOffset EndUtc { get; set; }
     public int OwnerId { get; set; }
