@@ -198,6 +198,13 @@ namespace FA22.P05.Web.Controllers
                     Price = x.Price,
                     StartUtc = x.StartUtc,
                     EndUtc = x.EndUtc
+                    Country = x.Country,
+                    Publisher = x.Publisher,
+                    Version = x.Version,
+                    Language = x.Language,
+                    Year = x.Year,
+                    Condition = x.Condition,
+                    Catagory = x.Catagory
                 });
         }
     }
