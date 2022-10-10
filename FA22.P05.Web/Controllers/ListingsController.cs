@@ -62,13 +62,14 @@ namespace FA22.P05.Web.Controllers
                 Description = dto.Description,
                 Price = dto.Price,
                 Country = dto.Country,
-                Condition = dto.Condition,
                 Publisher = dto.Publisher,
                 Version = dto.Version,
                 Language = dto.Language,
                 StartUtc = dto.StartUtc!.Value,
                 EndUtc = dto.EndUtc!.Value,
                 Year = dto.Year,
+                //Condition = dto.Condition,
+                Catagory = dto.Catagory,
                 OwnerId = User.GetCurrentUserId() ?? throw new Exception("Missing user id")
             };
             listings.Add(listing);
@@ -196,7 +197,14 @@ namespace FA22.P05.Web.Controllers
                     Description = x.Description,
                     Price = x.Price,
                     StartUtc = x.StartUtc,
-                    EndUtc = x.EndUtc
+                    EndUtc = x.EndUtc,
+                    Country = x.Country,
+                    Publisher = x.Publisher,
+                    Version = x.Version,
+                    Language = x.Language,
+                    Year = x.Year,
+                   // Condition = x.Condition,
+                    Catagory = x.Catagory
                 });
         }
     }
