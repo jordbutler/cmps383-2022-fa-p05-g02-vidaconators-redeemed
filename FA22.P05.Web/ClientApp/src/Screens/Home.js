@@ -7,6 +7,8 @@ export function HomeScreen() {
 
             <WebAppBar />
 
+            <a href="LogIn.js">Go to Login Screen</a>
+
         </div>
 
     )
