@@ -1,19 +1,26 @@
 // import logo from './logo.svg';
 import './App.css';
-import { HomeScreen } from './Screens/Home'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./Screens/Layout";
 import {LoginScreen} from './Screens/LogIn'
+import {HomeScreen} from './Screens/Home'
+
+
 
 function App() {
+
+
   return (
     <div className="App">
 
-      <HomeScreen />
-
-      <a href="LogIn.js">Go to Login Screen</a>
-
-      <a href="Home.js">Go to Login Screen</a>
-
-      
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+        <Route path="Login" element={<LoginScreen />} />
+        <Route path="Home" element={<HomeScreen />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
 
 
     </div>

@@ -1,4 +1,5 @@
-import { WebAppBar } from "../Components/AppBar"
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
 
 export function LoginScreen() {
 
@@ -6,9 +7,10 @@ export function LoginScreen() {
 
         <div color="Red">
 
-            <WebAppBar />
 
-            <a href="Home.js">Go to Details</a>
+        <TextField id="outlined-basic" label="Username" variant="outlined" />
+      <TextField id="outlined-basic" label="Password" variant="outlined" />
+      
 
         </div>
     )
