@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
@@ -14,7 +14,6 @@ import Button from '@mui/material/Button';
 import InputBase from '@mui/material/InputBase';
 import { alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
-import Divider from '@mui/material/Divider';
 
 const drawerWidth = 240;
 
