@@ -83,6 +83,7 @@ export function WebAppBar() {
     setOpen(false);
   };
 
+
   
   return (
     <Box sx={{ flexGrow: 1 }}>
