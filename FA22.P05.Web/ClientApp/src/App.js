@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     
-    axios.post('/api/authentication/login', {userName: 'galkadi', password: 'Password123!'});
+    //axios.post('/api/authentication/login', {userName: 'galkadi', password: 'Password123!'});
 
     axios.get('/api/listings/3/items').then((response) => {
       setListingResponse(response?.data);
@@ -40,6 +40,10 @@ function App() {
   console.log(listingResponse);
   return (
     <div className="App">
+
+{!productResponse ? "is null" : <ul>{productResponse.map(x => <li key={x.id}>{x.name}</li>)}</ul>}
+{!itemResponse ? "is null" : <ul>{itemResponse.productName}</ul>}
+{!listingResponse ? "is null" : <ul>{listingResponse.map(x => <li key={x.id}>{x.productName}</li>)}</ul>}
 
 
 

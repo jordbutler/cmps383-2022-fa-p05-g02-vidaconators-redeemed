@@ -24,7 +24,7 @@ export function ListingScreen() {
 
         <div>
 
-            {!activeResponse ? "is null" : <ul>{activeResponse.Name}</ul>}
+            {!activeResponse ? "is null" : <ul>{activeResponse.name}</ul>}
             {!listingResponse ? "is null" : <ul>{listingResponse.map(x => <li key={x.id}>{x.productName}</li>)}</ul>}
            
            

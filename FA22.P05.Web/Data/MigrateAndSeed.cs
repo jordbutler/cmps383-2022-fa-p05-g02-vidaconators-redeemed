@@ -1,4 +1,8 @@
-﻿using FA22.P05.Web.Features.Authorization;
+﻿using FA22.P05.Web.Controllers;
+using FA22.P05.Web.Features.Authorization;
+using FA22.P05.Web.Features.ItemListings;
+using FA22.P05.Web.Features.Items;
+using FA22.P05.Web.Features.Listings;
 using FA22.P05.Web.Features.Products;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +20,41 @@ public static class MigrateAndSeed
 
         await AddRoles(services);
         await AddUsers(services);
+        await AddListing(context);
+    }
+
+    public static async Task AddListing(DataContext context)
+    {
+        var listings = context.Set<Listing>();
+
+        if(listings.Any(x=> x.EndUtc > DateTimeOffset.UtcNow))
+        {
+            return;
+        }
+
+        listings.Add(new Listing
+        {
+            EndUtc = DateTimeOffset.UtcNow.AddDays(3),
+            Owner = context.Set<User>().FirstOrDefault(),
+            Name = "Nintendo",
+            Price = 50.99m,
+            StartUtc = DateTimeOffset.UtcNow,
+            ItemsForSale = new List<ItemListing>
+            {
+                new ItemListing
+                {
+                    Item = new Item
+                    {
+                        Condition = "Brand New",
+                        Product = context.Set<Product>().FirstOrDefault(),
+                        Owner = context.Set<User>().FirstOrDefault(),
+                    }
+
+                }
+            }
+
+        });
+        context.SaveChanges();
     }
 
 
