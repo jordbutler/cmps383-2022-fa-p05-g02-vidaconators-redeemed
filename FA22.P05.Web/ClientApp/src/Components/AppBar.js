@@ -14,6 +14,9 @@ import Button from '@mui/material/Button';
 import InputBase from '@mui/material/InputBase';
 import { alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
+//import { BrowserRouter, Routes, Route, Redirect} from "react-router-dom";
+//import { ProductsScreen } from '../Screens/Products';
+
 
 const drawerWidth = 240;
 
@@ -72,7 +75,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export function WebAppBar() {
 
-    const theme = useTheme();
+  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -81,6 +84,20 @@ export function WebAppBar() {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const onSearch = (e) => {
+
+    <Link to="Products"></Link>
+
+    /*<Route>
+        <Switch>
+
+        </Switch>
+         <Redirect path="/Products" component={ProductsScreen} />
+    </Routef>*/
+   
+    
   };
 
 
@@ -113,6 +130,7 @@ export function WebAppBar() {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              onChange={onSearch}
             />
           </Search>
           
