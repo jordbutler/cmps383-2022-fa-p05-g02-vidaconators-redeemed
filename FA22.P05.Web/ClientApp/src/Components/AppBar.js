@@ -136,7 +136,6 @@ export function WebAppBar() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
-        <Link to="Home"><Button>Home</Button></Link>
         <Link to="Login"><Button>Login</Button></Link>
         <Link to="Listing"><Button>Active Listings</Button></Link>
         <Link to="Products"><Button>Products</Button></Link>
