@@ -1,4 +1,9 @@
-﻿using FA22.P05.Web.Features.Authorization;
+﻿
+
+using FA22.P05.Web.Features.Authorization;
+using FA22.P05.Web.Features.ItemListings;
+using FA22.P05.Web.Features.Items;
+using FA22.P05.Web.Features.Listings;
 using FA22.P05.Web.Features.Products;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,9 +21,81 @@ public static class MigrateAndSeed
 
         await AddRoles(services);
         await AddUsers(services);
+        await AddListings(context);
     }
 
+    private static async Task AddListings(DataContext context)
+    {
+        var listings = context.Set<Listing>();
+        if (listings.Any())
+        {
+            return;
+        }
 
+        listings.Add(new Listing
+        {
+            Catagory = "Console",
+
+            Language = "English",
+
+            Name = "Nintendo Listing",
+
+            Country = "UK",
+
+            Description = "Nintendo Games",
+
+            Owner = context.Set<User>().FirstOrDefault(),
+
+            Price = 50.99m,
+
+            Year = 2022,
+
+            Publisher = "Nintendo",
+
+            OwnerId = 1,
+
+            StartUtc = DateTime.UtcNow,
+
+            EndUtc = DateTimeOffset.MaxValue,
+
+            Version = "N64",
+
+
+
+            ItemsForSale = new List<ItemListing>
+            {
+                new ItemListing
+                {
+
+                    Item = new Item
+                    {
+
+                        Condition = "Good",
+                        Product = context.Set<Product>().FirstOrDefault(),
+                        Owner = context.Set<User>().FirstOrDefault()
+
+
+                    }
+
+                },
+
+
+                new ItemListing
+                {
+                    Item = new Item
+                    {
+                        Condition = "Brand New",
+                        ProductId = 2,
+                        Owner = context.Set<User>().FirstOrDefault(),
+                    }
+                }
+
+            }
+
+        });
+        context.SaveChanges();
+
+    }
 
     private static void AddProducts(DataContext context)
     {
