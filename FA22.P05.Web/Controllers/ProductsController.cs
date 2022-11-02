@@ -22,9 +22,16 @@ namespace FA22.P05.Web.Controllers
         }
 
         [HttpGet]
-        public IQueryable<ProductDto> GetAllProducts()
+        public IQueryable<ProductDto> GetAllProducts(string? search)
         {
-            return GetProductDtos(products);
+            var results = products.AsQueryable();
+
+            if(search != null)
+            {
+                results = results.Where(x => x.Name.Contains(search));
+            }
+
+            return GetProductDtos(results);
         }
 
         [HttpGet]

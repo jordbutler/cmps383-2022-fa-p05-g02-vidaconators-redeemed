@@ -18,6 +18,8 @@ public static class MigrateAndSeed
         await AddUsers(services);
     }
 
+
+
     private static void AddProducts(DataContext context)
     {
         var products = context.Set<Product>();
