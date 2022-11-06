@@ -1,7 +1,7 @@
 
 
 import * as React from "react";
-import { Text, View,Button  } from "react-native";
+import {  View, } from "react-native";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
