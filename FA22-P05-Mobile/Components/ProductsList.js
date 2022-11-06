@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Text, View, StyleSheet, } from "react-native";
-import { useEffect,  } from "react";
+
 
 
 
@@ -12,7 +12,7 @@ export function ProductList(props) {
      
       {props.products.map((product, i)=> {
         return(
-        <View >
+        <View key={i} >
 
             <Text>{product.name}</Text>
             <Text>{product.description}</Text>
