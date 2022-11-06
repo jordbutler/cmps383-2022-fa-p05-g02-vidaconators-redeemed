@@ -34,9 +34,7 @@ export function HomeScreen({navigation}) {
   return (
     <View>
       <ListingList listings={listings}/>
-        <Text>
-          words
-        </Text>
+
     </View>
   );
 }
