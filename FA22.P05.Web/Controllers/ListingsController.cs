@@ -68,7 +68,7 @@ namespace FA22.P05.Web.Controllers
                 StartUtc = dto.StartUtc!.Value,
                 EndUtc = dto.EndUtc!.Value,
                 Year = dto.Year,
-                //Condition = dto.Condition,
+                // Condition = dto.Condition,
                 Catagory = dto.Catagory,
                 OwnerId = User.GetCurrentUserId() ?? throw new Exception("Missing user id")
             };
@@ -203,7 +203,7 @@ namespace FA22.P05.Web.Controllers
                     Version = x.Version,
                     Language = x.Language,
                     Year = x.Year,
-                   // Condition = x.Condition,
+                    // Condition = x.Condition,
                     Catagory = x.Catagory
                 });
         }
