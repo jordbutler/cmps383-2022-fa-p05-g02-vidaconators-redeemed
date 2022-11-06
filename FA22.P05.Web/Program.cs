@@ -45,6 +45,7 @@ using (var scope = app.Services.CreateScope())
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
+
 {
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -64,14 +65,14 @@ app.UseEndpoints(routeBuilder =>
 });
 
 app.UseStaticFiles();
-// app.UseSpa(spaBuilder =>
-// {
-//     spaBuilder.Options.SourcePath = "ClientApp";
-//     if (app.Environment.IsDevelopment())
-//     {
-//         spaBuilder.UseProxyToSpaDevelopmentServer("https://localhost:3000/");
-//     }
-// });
+app.UseSpa(spaBuilder =>
+{
+    spaBuilder.Options.SourcePath = "ClientApp";
+    if (app.Environment.IsDevelopment())
+    {
+        spaBuilder.UseProxyToSpaDevelopmentServer("https://localhost:3000/");
+    }
+});
 
 
 app.Run();

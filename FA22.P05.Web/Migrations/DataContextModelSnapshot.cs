@@ -155,7 +155,7 @@ namespace FA22.P05.Web.Migrations
 
                     b.HasIndex("ListingId");
 
-                    b.ToTable("ItemListing");
+                    b.ToTable("ItemListing", (string)null);
                 });
 
             modelBuilder.Entity("FA22.P05.Web.Features.Items.Item", b =>
@@ -181,7 +181,7 @@ namespace FA22.P05.Web.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Item");
+                    b.ToTable("Item", (string)null);
                 });
 
             modelBuilder.Entity("FA22.P05.Web.Features.Listings.Listing", b =>
@@ -237,7 +237,7 @@ namespace FA22.P05.Web.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Listing");
+                    b.ToTable("Listing", (string)null);
                 });
 
             modelBuilder.Entity("FA22.P05.Web.Features.Products.Product", b =>
@@ -258,7 +258,7 @@ namespace FA22.P05.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product");
+                    b.ToTable("Product", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
