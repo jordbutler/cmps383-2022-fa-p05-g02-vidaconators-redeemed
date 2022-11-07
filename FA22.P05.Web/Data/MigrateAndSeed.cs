@@ -162,7 +162,6 @@ public static class MigrateAndSeed
                     Item = new Item
                     {
                         Condition = "Brand New",
-                        ProductId = 2,
                         Owner = context.Set<User>().FirstOrDefault(),
                     }
                 }
