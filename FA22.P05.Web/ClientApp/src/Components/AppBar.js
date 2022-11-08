@@ -14,6 +14,10 @@ import Button from '@mui/material/Button';
 import InputBase from '@mui/material/InputBase';
 import { alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
+import axios from 'axios';
+import { useState } from 'react';
+import Menu from '@mui/material/Menu';
+//import MenuItem from '@mui/material/MenuItem';
 //import { BrowserRouter, Routes, Route, Redirect} from "react-router-dom";
 //import { ProductsScreen } from '../Screens/Products';
 
@@ -71,12 +75,41 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+   
+
 
 
 export function WebAppBar() {
 
+  const path = "api/products?search=";
+    
+    
+
+  const [productResponse, setProductsResponse] = useState(null);
+  const [searchResponse] = useState(null);
+
+  const onSearch = (e) => {
+    e.preventDefault();
+    
+    const search = e.target.value;
+    const url = path + search;
+    
+
+    axios.get(url).then((response) => {
+        setProductsResponse(response?.data);
+    });
+
+    console.log(productResponse);
+
+    
+
+    
+
+};
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -86,19 +119,14 @@ export function WebAppBar() {
     setOpen(false);
   };
 
-  const onSearch = (e) => {
-
-    <Link to="Products"></Link>
-
-    /*<Route>
-        <Switch>
-
-        </Switch>
-         <Redirect path="/Products" component={ProductsScreen} />
-    </Routef>*/
-   
-    
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
   };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
 
 
   
@@ -123,7 +151,35 @@ export function WebAppBar() {
           >
             Toco
           </Typography>
-          <Search>
+
+          <Button
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                Search
+              </Button>
+
+          <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                
+                <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -131,8 +187,13 @@ export function WebAppBar() {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
               onChange={onSearch}
+              value={searchResponse}
             />
           </Search>
+                <Typography>
+                {!productResponse ? "is null" : <ul>{productResponse.map(x => <li key={x.id}>{x.name}</li>)}</ul>}
+                </Typography>
+              </Menu>
           
         </Toolbar>
       </AppBar>
