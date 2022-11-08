@@ -27,7 +27,6 @@ namespace FA22.P05.Web.Controllers
         }
 
         [HttpGet]
-        [Route("all")]
         public IQueryable<ListingDto> GetListings()
         {
             var now = 0;
