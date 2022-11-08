@@ -30,8 +30,8 @@ namespace FA22.P05.Web.Controllers
         [Route("all")]
         public IQueryable<ListingDto> GetListings()
         {
-            var now = DateTimeOffset.UtcNow;
-            return GetListingDtos(listings);
+            var now = 0;
+            return GetListingDtos(listings.Where(x => x.Id > now));
         }
 
         [HttpGet]
