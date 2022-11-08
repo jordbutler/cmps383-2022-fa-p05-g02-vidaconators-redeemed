@@ -27,6 +27,14 @@ namespace FA22.P05.Web.Controllers
         }
 
         [HttpGet]
+        [Route("all")]
+        public IQueryable<ListingDto> GetListings()
+        {
+            var now = DateTimeOffset.UtcNow;
+            return GetListingDtos(listings);
+        }
+
+        [HttpGet]
         [Route("active")]
         public IQueryable<ListingDto> GetActiveListings()
         {
