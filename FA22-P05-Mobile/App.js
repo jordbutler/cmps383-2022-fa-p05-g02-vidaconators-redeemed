@@ -1,22 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Appbar } from "react-native-paper";
-import { MobileAppBar } from './Components/MobileAppBar';
-export default function App() {
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import {HomeScreen} from './Screens/HomeScreen';
+import {LoginScreen} from './Screens/LoginScreen';
+
+
+const Drawer = createDrawerNavigator();
+
+export function DrawerNavigator() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-     <MobileAppBar/>
-      <Text>TOCO</Text>
-    </View>
+    <Drawer.Navigator>
+      <Drawer.Screen name= "Toco Games" component={HomeScreen}  options={{headershown:false,  drawerLabel: "Home",}}/>
+      <Drawer.Screen name="Login" component={LoginScreen} />
+    </Drawer.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <DrawerNavigator/>
+    </NavigationContainer>
+  );
+}

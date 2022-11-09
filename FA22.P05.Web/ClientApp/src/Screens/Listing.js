@@ -20,11 +20,11 @@ export function ListingScreen() {
     const [oldbaby, setoldbaby] = useState(null);
 
     useEffect(() => {
-        axios.get('/api/listings/1').then((response) => {
+        axios.get('api/listings?').then((response) => {
             setActiveResponse(response?.data);
         });
-        axios.get('/api/listings/1/items').then((response) => {
-          setListingResponse(response?.data);
+        axios.get('api/listings?').then((response) => {
+         setListingResponse(response?.data);
         });
 
         axios.get('/api/listings/2').then((response) => {
