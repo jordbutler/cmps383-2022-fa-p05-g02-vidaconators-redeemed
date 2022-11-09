@@ -16,10 +16,9 @@ export function ListingListItem(props) {
             activeOpacity={0.6}
             underlayColor="#DDDDDD" onPress={()=>setIsExpanded(true)}>
         
-                <View >
+                <View style={styles.productListContainer} >
         
                      <Text>{props.listing.name}</Text>
-                    <Text>{props.listing.description}</Text>
                     <View style={styles.spacing}/>
                 </View>
             </TouchableHighlight>   
@@ -31,11 +30,11 @@ export function ListingListItem(props) {
                 activeOpacity={0.6}
                 underlayColor="#DDDDDD" onPress={()=>setIsExpanded(false)}>
             
-                    <View >
+                    <View style={styles.productListContainer}>
             
                          <Text>{props.listing.name}</Text>
                         <Text>{props.listing.description}</Text>
-                        <Text> I am EXpanded</Text>
+                        
                         <View style={styles.spacing}/>
                     </View>
                 </TouchableHighlight>   
@@ -53,10 +52,10 @@ const styles = StyleSheet.create({
     marginBottom:5
  },
  productListContainer: {
-    marginTop: 100,
+    marginTop: 20,
    
-    marginLeft:'auto',
-    marginRight:'auto'
+    marginLeft:100,
+    marginRight:100
  }
  
   
