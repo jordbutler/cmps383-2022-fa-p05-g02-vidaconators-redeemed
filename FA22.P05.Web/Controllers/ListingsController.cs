@@ -27,6 +27,19 @@ namespace FA22.P05.Web.Controllers
         }
 
         [HttpGet]
+        public IQueryable<ListingDto> GetAllListings(string? search)
+        {
+            var results = listings.AsQueryable();
+
+            if (search != null)
+            {
+                results = results.Where(x => x.Name.Contains(search));
+            }
+
+            return GetListingDtos(results);
+        }
+
+        [HttpGet]
         [Route("active")]
         public IQueryable<ListingDto> GetActiveListings()
         {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import Button from '@mui/material/Button';
-
+import axios from 'axios';
 
 
 
@@ -22,6 +22,13 @@ export function LoginScreen() {
     const password = e.target.value;
     setPassword(password);
   };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+      axios.post('/api/authentication/login', {userName: username, password: password});
+  
+  };
   
   
 
@@ -31,7 +38,7 @@ export function LoginScreen() {
 
         
 
-        <form className="form">
+        <form className="form" onSubmit={handleLogin}>
           <TextField
             type="text"
             className="form-control"
@@ -47,7 +54,7 @@ export function LoginScreen() {
             onChange={onChangePassword}
           />
 
-          <Button type="button" color="primary" className="form__custom-button">
+          <Button type="submit" color="primary" className="form__custom-button">
             Log in
           </Button>
         </form>

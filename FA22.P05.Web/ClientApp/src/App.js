@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Layout from "./Screens/Layout";
 import {LoginScreen} from './Screens/LogIn'
 import {HomeScreen} from './Screens/Home'
@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     
-    axios.post('/api/authentication/login', {userName: 'galkadi', password: 'Password123!'});
+    //axios.post('/api/authentication/login', {userName: 'galkadi', password: 'Password123!'});
 
     axios.get('/api/listings/3/items').then((response) => {
       setListingResponse(response?.data);
@@ -46,13 +46,13 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-        <Route path="Login" element={<LoginScreen />} />
-        <Route path="Home" element={<HomeScreen />} />
-        <Route path="Listing" element={<ListingScreen />} />
-        <Route path="Products" element={<ProductsScreen />} />
+          <Route exact path="/" element={<HomeScreen />}/>
+          <Route path="Login" element={<LoginScreen />} />
+          <Route path="Listing" element={<ListingScreen />} />
+          <Route path="Products" element={<ProductsScreen />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter> 
 
 
     </div>
