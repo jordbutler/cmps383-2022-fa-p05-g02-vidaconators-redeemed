@@ -31,10 +31,10 @@ public static class MigrateAndSeed
     {
         var listings = context.Set<Listing>();
 
-        //if(listings.Any(x=> x.EndUtc > DateTimeOffset.UtcNow))
-        //{
-          //  return;
-        //}
+        if(listings.Any(x=> x.EndUtc > DateTimeOffset.UtcNow))
+        {
+            return;
+        }
 
         listings.Add(new Listing
         {
