@@ -35,6 +35,9 @@ export function ListingListItem(props) {
                          <Text style={styles.productName}>{props.listing.name}</Text>
                         <Text style={styles.productDescription}>{props.listing.description}</Text>
                         <Text style={styles.productDescription}>{props.listing.price}</Text>
+                        <Text style={styles.productDescription}>{props.listing.publisher}</Text>
+                        <Text style={styles.productDescription}>{props.listing.version}</Text>
+                        <Text style={styles.productDescription}>{props.listing.language}</Text>
                         <View style={styles.spacing}/>
                     </View>
                 </TouchableHighlight>   

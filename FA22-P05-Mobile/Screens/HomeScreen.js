@@ -14,6 +14,7 @@ export function HomeScreen({navigation}) {
 
  const url =  `https://cmps383-2022-fa-p05-g02-vidaconators-redeemed.azurewebsites.net/api/listings`
 
+ 
  const handleGetActiveListings = () => {
   return axios.get(url).then((response)=> {
     setListings(response.data)
