@@ -81,7 +81,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export function WebAppBar() {
 
-  const path = "api/products?search=";
+  //const path = "api/products?search=";
+  const newpath = "api/listings?search=";
     
     
 
@@ -92,7 +93,7 @@ export function WebAppBar() {
     e.preventDefault();
     
     const search = e.target.value;
-    const url = path + search;
+    const url = newpath + search;
     
 
     axios.get(url).then((response) => {

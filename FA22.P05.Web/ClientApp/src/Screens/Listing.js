@@ -16,6 +16,8 @@ export function ListingScreen() {
     const [activeResponse, setActiveResponse] = useState(null);
     const [listing, setListing] = useState(null);
     const [listings, setListings] = useState(null);
+    const [newbaby, setnewbaby] = useState(null);
+    const [oldbaby, setoldbaby] = useState(null);
 
     useEffect(() => {
         axios.get('/api/listings/1').then((response) => {
@@ -31,6 +33,13 @@ export function ListingScreen() {
       axios.get('/api/listings/2/items').then((response) => {
         setListings(response?.data);
       });
+
+      axios.get('/api/listings/3').then((response) => {
+        setnewbaby(response?.data);
+    });
+    axios.get('/api/listings/3/items').then((response) => {
+      setoldbaby(response?.data);
+    });
       }, []);
 
       console.log(listingResponse);
@@ -73,6 +82,18 @@ export function ListingScreen() {
         </Typography>
       </CardContent>
     </Card>
+
+    <Card sx={{ minWidth: 275 }}>
+      <CardContent>
+        <Typography variant="h5" component="div">
+        {!newbaby ? "is null" : <ul>{newbaby.name}</ul>}
+        </Typography>
+        <Typography variant="body2">
+        {!oldbaby ? "is null" : <ul>{oldbaby.map(x => <li key={x.id}>{x.productName}</li>)}</ul>}
+        </Typography>
+      </CardContent>
+    </Card>
+
     </Box>
 
             
