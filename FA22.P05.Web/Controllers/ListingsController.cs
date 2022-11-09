@@ -27,10 +27,16 @@ namespace FA22.P05.Web.Controllers
         }
 
         [HttpGet]
-        public IQueryable<ListingDto> GetListings()
+        public IQueryable<ListingDto> GetAllListings(string? search)
         {
-            var now = 0;
-            return GetListingDtos(listings.Where(x => x.Id > now));
+            var results = listings.AsQueryable();
+
+            if (search != null)
+            {
+                results = results.Where(x => x.Name.Contains(search));
+            }
+
+            return GetListingDtos(results);
         }
 
         [HttpGet]
