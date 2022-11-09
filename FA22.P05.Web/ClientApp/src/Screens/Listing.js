@@ -8,10 +8,10 @@ export function ListingScreen() {
     const [activeResponse, setActiveResponse] = useState(null);
 
     useEffect(() => {
-        axios.get('api/listings?').then((response) => {
+        axios.get('api/listings').then((response) => {
             setActiveResponse(response?.data);
         });
-        axios.get('api/listings?').then((response) => {
+        axios.get('api/listings').then((response) => {
          setListingResponse(response?.data);
         });
       }, []);
@@ -24,7 +24,7 @@ export function ListingScreen() {
 
         <div>
 
-            {!activeResponse ? "is null" : <ul>{activeResponse.Name}</ul>}
+            {!activeResponse ? "is null" : <ul>{activeResponse.name}</ul>}
             {!listingResponse ? "is null" : <ul>{listingResponse.map(x => <li key={x.id}>{x.productName}</li>)}</ul>}
            
            
