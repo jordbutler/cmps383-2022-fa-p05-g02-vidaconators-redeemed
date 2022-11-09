@@ -1,7 +1,7 @@
 
 
 import * as React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet,  } from "react-native";
 import {useState} from 'react';
 
 import { TouchableHighlight } from "react-native";
