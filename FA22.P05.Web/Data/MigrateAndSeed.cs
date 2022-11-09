@@ -55,6 +55,54 @@ public static class MigrateAndSeed
 
         });
         context.SaveChanges();
+
+        listings.Add(new Listing
+        {
+            EndUtc = DateTimeOffset.UtcNow.AddDays(3),
+            Owner = context.Set<User>().FirstOrDefault(),
+            Name = "PS5",
+            Price = 50.99m,
+            StartUtc = DateTimeOffset.UtcNow,
+            ItemsForSale = new List<ItemListing>
+            {
+                new ItemListing
+                {
+                    Item = new Item
+                    {
+                        Condition = "Brand New",
+                        Product = context.Set<Product>().FirstOrDefault(),
+                        Owner = context.Set<User>().FirstOrDefault(),
+                    }
+
+                }
+            }
+
+        });
+        context.SaveChanges();
+
+        listings.Add(new Listing
+        {
+            EndUtc = DateTimeOffset.UtcNow.AddDays(3),
+            Owner = context.Set<User>().FirstOrDefault(),
+            Name = "Xbox",
+            Price = 50.99m,
+            StartUtc = DateTimeOffset.UtcNow,
+            ItemsForSale = new List<ItemListing>
+            {
+                new ItemListing
+                {
+                    Item = new Item
+                    {
+                        Condition = "Brand New",
+                        Product = context.Set<Product>().FirstOrDefault(),
+                        Owner = context.Set<User>().FirstOrDefault(),
+                    }
+
+                }
+            }
+
+        });
+        context.SaveChanges();
     }
 
 

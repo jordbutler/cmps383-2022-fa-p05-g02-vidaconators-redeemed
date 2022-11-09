@@ -14,6 +14,8 @@ export function ListingScreen() {
 
     const [listingResponse, setListingResponse] = useState(null);
     const [activeResponse, setActiveResponse] = useState(null);
+    const [listing, setListing] = useState(null);
+    const [listings, setListings] = useState(null);
 
     useEffect(() => {
         axios.get('/api/listings/1').then((response) => {
@@ -22,6 +24,13 @@ export function ListingScreen() {
         axios.get('/api/listings/1/items').then((response) => {
           setListingResponse(response?.data);
         });
+
+        axios.get('/api/listings/2').then((response) => {
+          setListing(response?.data);
+      });
+      axios.get('/api/listings/2/items').then((response) => {
+        setListings(response?.data);
+      });
       }, []);
 
       console.log(listingResponse);
@@ -50,6 +59,17 @@ export function ListingScreen() {
         </Typography>
         <Typography variant="body2">
         {!listingResponse ? "is null" : <ul>{listingResponse.map(x => <li key={x.id}>{x.productName}</li>)}</ul>}
+        </Typography>
+      </CardContent>
+    </Card>
+
+    <Card sx={{ minWidth: 275 }}>
+      <CardContent>
+        <Typography variant="h5" component="div">
+        {!listing ? "is null" : <ul>{listing.name}</ul>}
+        </Typography>
+        <Typography variant="body2">
+        {!listings ? "is null" : <ul>{listings.map(x => <li key={x.id}>{x.productName}</li>)}</ul>}
         </Typography>
       </CardContent>
     </Card>
