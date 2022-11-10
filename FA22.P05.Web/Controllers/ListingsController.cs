@@ -34,6 +34,7 @@ namespace FA22.P05.Web.Controllers
             if (search != null)
             {
                 results = results.Where(x => x.Name.Contains(search));
+               
             }
 
             return GetListingDtos(results);
@@ -81,7 +82,7 @@ namespace FA22.P05.Web.Controllers
                 StartUtc = dto.StartUtc!.Value,
                 EndUtc = dto.EndUtc!.Value,
                 Year = dto.Year,
-                // Condition = dto.Condition,
+                //Condition = dto.Condition,
                 Catagory = dto.Catagory,
                 OwnerId = User.GetCurrentUserId() ?? throw new Exception("Missing user id")
             };
@@ -216,8 +217,26 @@ namespace FA22.P05.Web.Controllers
                     Version = x.Version,
                     Language = x.Language,
                     Year = x.Year,
-                    // Condition = x.Condition,
+                   // Condition = x.Condition,
                     Catagory = x.Catagory
+                });
+        }
+
+        public static IQueryable<ListingActiveDto> GetListingActiveDtos(IQueryable<Listing> listings)
+        {
+            return listings
+                .Select(x => new ListingActiveDto
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    ItemsForSale = x.ItemsForSale.Select(y => new ItemDto
+                    {
+                        Id = y.ItemId,
+                        Condition = y.Item.Condition,
+                        ProductId = y.Item.ProductId,
+                        ProductName = y.Item.Product.Name,
+                    }).ToList()
+                   
                 });
         }
     }
