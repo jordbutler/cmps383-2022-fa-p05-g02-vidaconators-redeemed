@@ -94,6 +94,10 @@ namespace FA22.P05.Web.Controllers
             return CreatedAtAction(nameof(GetListingById), new { id = dto.Id }, dto);
         }
 
+        
+
+        
+
         [HttpGet]
         [Route("{id}/items")]
         public ActionResult<List<ItemDto>> GetItemsForSale(int id)
@@ -118,6 +122,7 @@ namespace FA22.P05.Web.Controllers
         [Authorize]
         public ActionResult<ListingDto> SetItemsForSale(int id, List<ItemDto> requestedItems)
         {
+ 
             var listing = listings
                 .Include(x => x.ItemsForSale)
                 .FirstOrDefault(x => x.Id == id);
@@ -166,6 +171,28 @@ namespace FA22.P05.Web.Controllers
 
             return NoContent();
         }
+
+        /*public async Task<ListingSearchResultDto[]> GetStuff()
+        {
+
+            var search = "xbox";
+            var matchingListings = listings
+                .Where(x => x.ItemsForSale.Any(y => y.Item.Product.Name.Contains(search)));
+
+            var searchResult = await MapToSearchDto(matchingListings)
+                .Take(10)
+                .ToArrayAsync();
+
+            return searchResult;
+        }
+        private IQueryable<ListingSearchResultDto> MapToSearchDto(IQueryable<Listing> matchingListings)
+        {
+            return matchingListings.Select(x => new ListingSearchResultDto
+            {
+                Id = x.Id,
+                Name = x.Name
+            });
+        }*/
 
         [HttpDelete]
         [Route("{id}")]
@@ -217,8 +244,16 @@ namespace FA22.P05.Web.Controllers
                     Language = x.Language,
                     Year = x.Year,
                     // Condition = x.Condition,
-                    Catagory = x.Catagory
-                });
+                    Catagory = x.Catagory,
+                    ItemsForSale = x.ItemsForSale.Select(y => new ItemDto
+                    {
+                        Condition = y.Item.Condition,
+                        Id = y.Item.Id,
+                        ProductId = y.Item.ProductId,
+                        ProductName = y.Item.Product.Name,
+                        
+                    })
+                }) ;
         }
     }
 }
