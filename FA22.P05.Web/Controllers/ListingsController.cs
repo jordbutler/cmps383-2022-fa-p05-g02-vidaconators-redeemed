@@ -96,15 +96,7 @@ namespace FA22.P05.Web.Controllers
 
         
 
-        [HttpGet]
-        [Route ("allitems")]
-        public IQueryable<Listing> GetListingsWithItems()
-        {
-            var results = listings.AsQueryable();
-
-
-            return results; 
-        }
+        
 
         [HttpGet]
         [Route("{id}/items")]
@@ -252,8 +244,16 @@ namespace FA22.P05.Web.Controllers
                     Language = x.Language,
                     Year = x.Year,
                     // Condition = x.Condition,
-                    Catagory = x.Catagory
-                });
+                    Catagory = x.Catagory,
+                    ItemsForSale = x.ItemsForSale.Select(y => new ItemDto
+                    {
+                        Condition = y.Item.Condition,
+                        Id = y.Item.Id,
+                        ProductId = y.Item.ProductId,
+                        ProductName = y.Item.Product.Name,
+                        
+                    })
+                }) ;
         }
     }
 }
