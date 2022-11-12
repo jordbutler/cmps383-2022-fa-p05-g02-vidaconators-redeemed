@@ -3,6 +3,7 @@ import { Text, View, StyleSheet } from "react-native";
 
 import { useRoute } from "@react-navigation/native";
 import { TouchableHighlight } from "react-native";
+import { ProductList } from "../Components/ProductList";
 
 export function ListingScreen(props, { navigation }) {
   const route = useRoute();
@@ -16,6 +17,8 @@ export function ListingScreen(props, { navigation }) {
       <Text style={styles.productDescription}>{listing.publisher}</Text>
       <Text style={styles.productDescription}>{listing.version}</Text>
       <View style={styles.spacing} />
+
+      <ProductList products={listing.itemsForSale}/>
     </View>
   );
 }
