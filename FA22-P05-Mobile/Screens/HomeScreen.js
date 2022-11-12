@@ -1,7 +1,7 @@
 
 
 import * as React from "react";
-import {  View, } from "react-native";
+import {  View, Text} from "react-native";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -16,6 +16,7 @@ export function HomeScreen({navigation}) {
 
  
  const handleGetActiveListings = () => {
+  const navigation= navigation
   return axios.get(url).then((response)=> {
     setListings(response.data)
      return response.data
@@ -35,7 +36,6 @@ export function HomeScreen({navigation}) {
   return (
     <View>
       <ListingList listings={listings}/>
-
     </View>
   );
 }
