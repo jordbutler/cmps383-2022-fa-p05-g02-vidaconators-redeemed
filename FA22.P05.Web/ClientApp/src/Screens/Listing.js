@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-
+import Button from '@mui/material/Button';
+import CardActions from '@mui/material/CardActions';
 import Box from '@mui/material/Box';
 
 
@@ -15,36 +16,16 @@ export function ListingScreen() {
     const [listingResponse, setListingResponse] = useState(null);
     const [activeResponse, setActiveResponse] = useState(null);
     const [activeListing, setActiveListing] = useState([{name:'hi', id:1}])
-    const [listing, setListing] = useState(null);
-    const [listings, setListings] = useState(null);
-    const [newbaby, setnewbaby] = useState(null);
-    const [oldbaby, setoldbaby] = useState(null);
+
 
     useEffect(() => {
-<<<<<<< Updated upstream
-        axios.get('api/listings?').then((response) => {
-=======
         axios.get('/api/listings').then((response) => {
->>>>>>> Stashed changes
             setActiveResponse(response?.data);
         });
         axios.get('api/listings?').then((response) => {
          setListingResponse(response?.data);
         });
 
-        axios.get('/api/listings/2').then((response) => {
-          setListing(response?.data);
-      });
-      axios.get('/api/listings/2/items').then((response) => {
-        setListings(response?.data);
-      });
-
-      axios.get('/api/listings/3').then((response) => {
-        setnewbaby(response?.data);
-    });
-    axios.get('/api/listings/3/items').then((response) => {
-      setoldbaby(response?.data);
-    });
       }, []);
 
       console.log(listingResponse);
@@ -73,40 +54,12 @@ export function ListingScreen() {
             {x.name}
             </Typography>
           </CardContent>
+          <CardActions>
+            <Button size="small">Buy</Button>
+          </CardActions>
         </Card>
       )}
-      <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography variant="h5" component="div">
-        {!activeResponse ? "is null" : <ul>{activeResponse.name}</ul>}
-        </Typography>
-        <Typography variant="body2">
-        {!listingResponse ? "is null" : <ul>{listingResponse.map(x => <li key={x.id}>{x.productName}</li>)}</ul>}
-        </Typography>
-      </CardContent>
-    </Card>
 
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography variant="h5" component="div">
-        {!listing ? "is null" : <ul>{listing.name}</ul>}
-        </Typography>
-        <Typography variant="body2">
-        {!listings ? "is null" : <ul>{listings.map(x => <li key={x.id}>{x.productName}</li>)}</ul>}
-        </Typography>
-      </CardContent>
-    </Card>
-
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography variant="h5" component="div">
-        {!newbaby ? "is null" : <ul>{newbaby.name}</ul>}
-        </Typography>
-        <Typography variant="body2">
-        {!oldbaby ? "is null" : <ul>{oldbaby.map(x => <li key={x.id}>{x.productName}</li>)}</ul>}
-        </Typography>
-      </CardContent>
-    </Card>
 
     </Box>
 
