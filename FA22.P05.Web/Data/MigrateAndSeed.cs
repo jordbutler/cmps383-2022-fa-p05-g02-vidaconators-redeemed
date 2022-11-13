@@ -131,8 +131,43 @@ public static class MigrateAndSeed
         });
         products.Add(new Product
         {
+            Name = "Luigi's Mansion",
+            Description = "Gamecube Physical Copy",
+        });
+        products.Add(new Product
+        {
             Name = "Half-Life 2: Collector's Edition",
             Description = "PC platform release of the 2004 wonder",
+        });
+        products.Add(new Product
+        {
+            Name = "God Of War Ragnorok",
+            Description = "PS5 Platform Physical Copy",
+        });
+        products.Add(new Product
+        {
+            Name = "Spiderman(PS4)",
+            Description = "Digital Copy",
+        });
+        products.Add(new Product
+        {
+            Name = "Tomb Raider Definitive Edition",
+            Description = "Deluxe Digital Edition",
+        });
+        products.Add(new Product
+        {
+            Name = "Sunset Overdrive",
+            Description = "Deluxe Digital Edition",
+        });
+        products.Add(new Product
+        {
+            Name = "Halo Infinite",
+            Description = "Standard Digital Edition",
+        });
+        products.Add(new Product
+        {
+            Name = "Dead Space",
+            Description = "Physical Copy",
         });
         context.SaveChanges();
     }

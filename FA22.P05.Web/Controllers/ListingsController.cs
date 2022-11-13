@@ -39,6 +39,25 @@ namespace FA22.P05.Web.Controllers
 
             return GetListingDtos(results);
         }
+        [HttpGet]
+        [Route("activeListing")]
+        public static IQueryable<ListingActiveDto> GetListingActiveDtos(IQueryable<Listing> listings)
+        {
+            return listings
+                .Select(x => new ListingActiveDto
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    ItemsForSale = (ICollection<ItemListing>)x.ItemsForSale.Select(y => new ItemDto
+                    {
+                        Id = y.ItemId,
+                        Condition = y.Item.Condition,
+                        ProductId = y.Item.ProductId,
+                        ProductName = y.Item.Product.Name,
+                    }).ToList()
+
+                });
+        }
 
         [HttpGet]
         [Route("active")]
@@ -221,23 +240,6 @@ namespace FA22.P05.Web.Controllers
                     Catagory = x.Catagory
                 });
         }
-
-        public static IQueryable<ListingActiveDto> GetListingActiveDtos(IQueryable<Listing> listings)
-        {
-            return listings
-                .Select(x => new ListingActiveDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    ItemsForSale = x.ItemsForSale.Select(y => new ItemDto
-                    {
-                        Id = y.ItemId,
-                        Condition = y.Item.Condition,
-                        ProductId = y.Item.ProductId,
-                        ProductName = y.Item.Product.Name,
-                    }).ToList()
-                   
-                });
-        }
+        
     }
 }
