@@ -81,11 +81,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export function WebAppBar() {
 
-  //const path = "api/products?search=";
+  const path = "api/products?search=";
   const newpath = "api/listings?search=";
     
     
 
+  const [listingResponse, setListingsResponse] = useState(null);
   const [productResponse, setProductsResponse] = useState(null);
   const [searchResponse] = useState(null);
 
@@ -94,14 +95,17 @@ export function WebAppBar() {
     
     const search = e.target.value;
     const url = newpath + search;
-    
+    const url2 = path + search;
 
     axios.get(url).then((response) => {
-        setProductsResponse(response?.data);
+        setListingsResponse(response?.data);
     });
+    axios.get(url2).then((response) => {
+      setProductsResponse(response?.data);
+  });
 
     console.log(productResponse);
-
+    console.log(productResponse);
     
 
     

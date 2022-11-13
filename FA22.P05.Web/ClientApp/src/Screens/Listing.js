@@ -14,13 +14,18 @@ export function ListingScreen() {
 
     const [listingResponse, setListingResponse] = useState(null);
     const [activeResponse, setActiveResponse] = useState(null);
+    const [activeListing, setActiveListing] = useState([{name:'hi', id:1}])
     const [listing, setListing] = useState(null);
     const [listings, setListings] = useState(null);
     const [newbaby, setnewbaby] = useState(null);
     const [oldbaby, setoldbaby] = useState(null);
 
     useEffect(() => {
+<<<<<<< Updated upstream
         axios.get('api/listings?').then((response) => {
+=======
+        axios.get('/api/listings').then((response) => {
+>>>>>>> Stashed changes
             setActiveResponse(response?.data);
         });
         axios.get('api/listings?').then((response) => {
@@ -61,6 +66,15 @@ export function ListingScreen() {
         },
       }}
     >
+      {activeListing.map(x =>
+        <Card key={x.id}>        
+          <CardContent>
+            <Typography variant="h5" component="div">
+            {x.name}
+            </Typography>
+          </CardContent>
+        </Card>
+      )}
       <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography variant="h5" component="div">
