@@ -50,9 +50,7 @@ export function ListingScreen() {
           <CardContent>
             <Typography variant="h5" component="div">
             {x.name}
-            </Typography>
-            <Typography>
-              {x.productName}
+            {x.productName}
             </Typography>
           </CardContent>
           <CardActions>
