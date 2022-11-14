@@ -16,10 +16,6 @@ export function ListingScreen() {
 
     const [listingResponse, setListingResponse] = useState(null);
     const [activeResponse, setActiveResponse] = useState(null);
-    const [listing, setListing] = useState(null);
-    const [listings, setListings] = useState(null);
-    const [newbaby, setnewbaby] = useState(null);
-    const [oldbaby, setoldbaby] = useState(null);
 
     useEffect(() => {
         axios.get('api/listings?').then((response) => {
@@ -29,19 +25,6 @@ export function ListingScreen() {
          setListingResponse(response?.data);
         });
 
-        axios.get('/api/listings/2').then((response) => {
-          setListing(response?.data);
-      });
-      axios.get('/api/listings/2/items').then((response) => {
-        setListings(response?.data);
-      });
-
-      axios.get('/api/listings/3').then((response) => {
-        setnewbaby(response?.data);
-    });
-    axios.get('/api/listings/3/items').then((response) => {
-      setoldbaby(response?.data);
-    });
       }, []);
 
       console.log(listingResponse);
