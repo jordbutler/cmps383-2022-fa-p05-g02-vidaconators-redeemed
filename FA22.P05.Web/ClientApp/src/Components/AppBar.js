@@ -14,6 +14,13 @@ import Button from '@mui/material/Button';
 import InputBase from '@mui/material/InputBase';
 import { alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
+import axios from 'axios';
+import { useState } from 'react';
+import Menu from '@mui/material/Menu';
+//import MenuItem from '@mui/material/MenuItem';
+//import { BrowserRouter, Routes, Route, Redirect} from "react-router-dom";
+//import { ProductsScreen } from '../Screens/Products';
+
 
 const drawerWidth = 240;
 
@@ -68,12 +75,42 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+   
+
 
 
 export function WebAppBar() {
 
-    const theme = useTheme();
+  //const path = "api/products?search=";
+  const newpath = "api/listings?search=";
+    
+    
+
+  const [productResponse, setProductsResponse] = useState(null);
+  const [searchResponse] = useState(null);
+
+  const onSearch = (e) => {
+    e.preventDefault();
+    
+    const search = e.target.value;
+    const url = newpath + search;
+    
+
+    axios.get(url).then((response) => {
+        setProductsResponse(response?.data);
+    });
+
+    console.log(productResponse);
+
+    
+
+    
+
+};
+
+  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -82,6 +119,16 @@ export function WebAppBar() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+
 
   
   return (
@@ -105,15 +152,49 @@ export function WebAppBar() {
           >
             Toco
           </Typography>
-          <Search>
+
+          <Button
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                Search
+              </Button>
+
+          <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                
+                <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              onChange={onSearch}
+              value={searchResponse}
             />
           </Search>
+                <Typography>
+                {!productResponse ? "is null" : <ul>{productResponse.map(x => <li key={x.id}>{x.name}</li>)}</ul>}
+                </Typography>
+              </Menu>
           
         </Toolbar>
       </AppBar>
@@ -135,8 +216,9 @@ export function WebAppBar() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
-        <Link to="Home"><Button>Home</Button></Link>
         <Link to="Login"><Button>Login</Button></Link>
+        <Link to="Listing"><Button>Active Listings</Button></Link>
+        <Link to="Products"><Button>Products</Button></Link>
       </Drawer>
     </Box>
   );
