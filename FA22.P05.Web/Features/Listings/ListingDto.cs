@@ -1,4 +1,6 @@
-﻿namespace FA22.P05.Web.Features.Listings;
+﻿using FA22.P05.Web.Features.Items;
+
+namespace FA22.P05.Web.Features.Listings;
 
 public class ListingDto
 {
@@ -15,4 +17,5 @@ public class ListingDto
     public string? Catagory { get; set; }
     public DateTimeOffset? StartUtc { get; set; }
     public DateTimeOffset? EndUtc { get; set; }
+    public IEnumerable<ItemDto> ItemsForSale { get; set; }
 }

@@ -41,14 +41,14 @@ namespace FA22.P05.Web.Controllers
         }
         [HttpGet]
         [Route("activeListing")]
-        public static IQueryable<ListingActiveDto> GetListingActiveDtos(IQueryable<Listing> listings)
+        public static IQueryable<ListingDto> GetListingActiveDtos(IQueryable<Listing> listings)
         {
             return listings
-                .Select(x => new ListingActiveDto
+                .Select(x => new ListingDto
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    ItemsForSale = (ICollection<ItemListing>)x.ItemsForSale.Select(y => new ItemDto
+                    ItemsForSale = x.ItemsForSale.Select(y => new ItemDto
                     {
                         Id = y.ItemId,
                         Condition = y.Item.Condition,
