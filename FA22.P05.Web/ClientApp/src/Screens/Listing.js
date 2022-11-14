@@ -3,10 +3,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import CardActions from '@mui/material/CardActions';
-import Typography from '@mui/material/Typography';
-
 import Box from '@mui/material/Box';
 
 
@@ -15,12 +14,12 @@ export function ListingScreen() {
     
 
     const [listingResponse, setListingResponse] = useState(null);
-    const [activeResponse, setActiveResponse] = useState(null);
+    
+    const [activeListing, setActiveListing] = useState([{name:'hi', id:1}])
+
 
     useEffect(() => {
-        axios.get('api/listings?').then((response) => {
-            setActiveResponse(response?.data);
-        });
+       
         axios.get('api/listings?').then((response) => {
          setListingResponse(response?.data);
         });
@@ -28,14 +27,14 @@ export function ListingScreen() {
       }, []);
 
       console.log(listingResponse);
-      console.log(activeResponse);
+      
 
 
     return(
 
         <div>
 
-<Box
+            <Box
       sx={{
         display: 'flex',
         flexWrap: 'wrap',
@@ -51,6 +50,9 @@ export function ListingScreen() {
           <CardContent>
             <Typography variant="h5" component="div">
             {x.name}
+            </Typography>
+            <Typography>
+              {x.productName}
             </Typography>
           </CardContent>
           <CardActions>
