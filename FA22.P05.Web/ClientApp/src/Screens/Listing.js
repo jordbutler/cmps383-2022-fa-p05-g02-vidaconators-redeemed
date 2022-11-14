@@ -52,7 +52,7 @@ export function ListingScreen() {
 
         <div>
 
-            <Box
+<Box
       sx={{
         display: 'flex',
         flexWrap: 'wrap',
@@ -63,38 +63,19 @@ export function ListingScreen() {
         },
       }}
     >
-      <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography variant="h5" component="div">
-        {!activeResponse ? "is null" : <ul>{activeResponse.name}</ul>}
-        </Typography>
-        <Typography variant="body2">
-        {!listingResponse ? "is null" : <ul>{listingResponse.map(x => <li key={x.id}>{x.productName}</li>)}</ul>}
-        </Typography>
-      </CardContent>
-    </Card>
+      {activeListing.map(x =>
+        <Card key={x.id}>        
+          <CardContent>
+            <Typography variant="h5" component="div">
+            {x.name}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small">Buy</Button>
+          </CardActions>
+        </Card>
+      )}
 
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography variant="h5" component="div">
-        {!listing ? "is null" : <ul>{listing.name}</ul>}
-        </Typography>
-        <Typography variant="body2">
-        {!listings ? "is null" : <ul>{listings.map(x => <li key={x.id}>{x.productName}</li>)}</ul>}
-        </Typography>
-      </CardContent>
-    </Card>
-
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography variant="h5" component="div">
-        {!newbaby ? "is null" : <ul>{newbaby.name}</ul>}
-        </Typography>
-        <Typography variant="body2">
-        {!oldbaby ? "is null" : <ul>{oldbaby.map(x => <li key={x.id}>{x.productName}</li>)}</ul>}
-        </Typography>
-      </CardContent>
-    </Card>
 
     </Box>
 
