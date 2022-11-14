@@ -50,10 +50,28 @@ public static class MigrateAndSeed
                     Item = new Item
                     {
                         Condition = "Brand New",
-                        Product = context.Set<Product>().FirstOrDefault(),
+                        Product = context.Set<Product>().Where(x => x.Name == "Donkey Kong 64").FirstOrDefault(),
                         Owner = context.Set<User>().FirstOrDefault(),
                     }
 
+                },
+                new ItemListing
+                {
+                    Item = new Item
+                    {
+                        Condition = "Brand New",
+                        Product = context.Set<Product>().Where(x => x.Name == "Super Mario World").FirstOrDefault(),
+                        Owner= context.Set<User>().FirstOrDefault(),
+                    }
+                },
+                new ItemListing
+                {
+                    Item = new Item
+                    {
+                        Condition = "Used",
+                        Product = context.Set<Product>().Where(x => x.Name == "Luigi's Mansion").FirstOrDefault(),
+                        Owner = context.Set<User>().FirstOrDefault(),
+                    }
                 }
             }
 
@@ -65,7 +83,7 @@ public static class MigrateAndSeed
             EndUtc = DateTimeOffset.UtcNow.AddDays(3),
             Owner = context.Set<User>().FirstOrDefault(),
             Name = "PS5",
-            Price = 50.99m,
+            Price = 70.99m,
             StartUtc = DateTimeOffset.UtcNow,
             ItemsForSale = new List<ItemListing>
             {
@@ -74,10 +92,28 @@ public static class MigrateAndSeed
                     Item = new Item
                     {
                         Condition = "Brand New",
-                        Product = context.Set<Product>().FirstOrDefault(),
+                        Product = context.Set<Product>().Where(x => x.Name == "God Of War Ragnorok").FirstOrDefault(),
                         Owner = context.Set<User>().FirstOrDefault(),
                     }
 
+                },
+                new ItemListing
+                {
+                    Item = new Item
+                    {
+                        Condition = "Brand New",
+                        Product = context.Set<Product>().Where(x => x.Name == "Spiderman(PS4)").FirstOrDefault(),
+                        Owner = context.Set<User>().FirstOrDefault(),
+                    }
+                },
+                new ItemListing
+                {
+                    Item = new Item
+                    {
+                        Condition = "Used",
+                        Product = context.Set<Product>().Where(x => x.Name == "Tomb Raider Definitive Edition").FirstOrDefault(),
+                        Owner= context.Set<User>().FirstOrDefault(),
+                    }
                 }
             }
 
@@ -89,7 +125,7 @@ public static class MigrateAndSeed
             EndUtc = DateTimeOffset.UtcNow.AddDays(3),
             Owner = context.Set<User>().FirstOrDefault(),
             Name = "Xbox",
-            Price = 50.99m,
+            Price = 45.99m,
             StartUtc = DateTimeOffset.UtcNow,
             ItemsForSale = new List<ItemListing>
             {
@@ -98,11 +134,31 @@ public static class MigrateAndSeed
                     Item = new Item
                     {
                         Condition = "Brand New",
-                        Product = context.Set<Product>().FirstOrDefault(),
+                        Product = context.Set<Product>().Where(x => x.Name == "Halo Infinite").FirstOrDefault(),
                         Owner = context.Set<User>().FirstOrDefault(),
                     }
 
-                }
+                },
+                new ItemListing
+                {
+                    Item = new Item
+                    {
+                        Condition = "Brand New",
+                        Product = context.Set<Product>().Where(x => x.Name == "Dead Space").FirstOrDefault(),
+                        Owner = context.Set<User>().FirstOrDefault(),
+                    }
+
+                },
+                new ItemListing
+                {
+                    Item = new Item
+                    {
+                        Condition = "Brand New",
+                        Product = context.Set<Product>().Where(x => x.Name == "Sunset Overdrive").FirstOrDefault(),
+                        Owner = context.Set<User>().FirstOrDefault(),
+                    }
+
+                },
             }
 
         });
@@ -131,8 +187,43 @@ public static class MigrateAndSeed
         });
         products.Add(new Product
         {
+            Name = "Luigi's Mansion",
+            Description = "Gamecube Physical Copy",
+        });
+        products.Add(new Product
+        {
             Name = "Half-Life 2: Collector's Edition",
             Description = "PC platform release of the 2004 wonder",
+        });
+        products.Add(new Product
+        {
+            Name = "God Of War Ragnorok",
+            Description = "PS5 Platform Physical Copy",
+        });
+        products.Add(new Product
+        {
+            Name = "Spiderman(PS4)",
+            Description = "Digital Copy",
+        });
+        products.Add(new Product
+        {
+            Name = "Tomb Raider Definitive Edition",
+            Description = "Deluxe Digital Edition",
+        });
+        products.Add(new Product
+        {
+            Name = "Sunset Overdrive",
+            Description = "Deluxe Digital Edition",
+        });
+        products.Add(new Product
+        {
+            Name = "Halo Infinite",
+            Description = "Standard Digital Edition",
+        });
+        products.Add(new Product
+        {
+            Name = "Dead Space",
+            Description = "Physical Copy",
         });
         context.SaveChanges();
     }
