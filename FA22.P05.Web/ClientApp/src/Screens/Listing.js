@@ -13,7 +13,7 @@ export function ListingScreen() {
 
     
 
-    const [listingResponse, setListingResponse] = useState(null);
+    
     
     const [activeListing, setActiveListing] = useState([{name:'hi', id:1}])
 
@@ -21,12 +21,12 @@ export function ListingScreen() {
     useEffect(() => {
        
         axios.get('api/listings?').then((response) => {
-         setListingResponse(response?.data);
+         setActiveListing(response?.data);
         });
 
       }, []);
 
-      console.log(listingResponse);
+      console.log(activeListing);
       
 
 
