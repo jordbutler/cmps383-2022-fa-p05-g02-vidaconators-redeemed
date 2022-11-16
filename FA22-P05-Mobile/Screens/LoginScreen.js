@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import {useState} from 'react';
-import { Dimensions } from "react-native";
 import { Text, View, StyleSheet, StatusBar,  } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 
