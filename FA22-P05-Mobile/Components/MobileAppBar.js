@@ -8,10 +8,10 @@ import { Appbar } from "react-native-paper";
 
 
 const windowWidth = Dimensions.get("window").width;
-const windowHeight = Dimensions.get("window").height;
+
 
 export function MobileAppBar() {
-  let hidden = true;
+ 
   return (
     <View>
       {/* <StatusBar hidden={hidden} /> */}
