@@ -2,10 +2,9 @@ import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
 
 import { useRoute } from "@react-navigation/native";
-import { TouchableHighlight } from "react-native";
 import { ProductList } from "../Components/ProductList";
 
-export function ListingScreen(props, { navigation }) {
+export function ListingScreen() {
   const route = useRoute();
   const { listing } = route.params;
 
