@@ -1,12 +1,14 @@
-import * as React from "react";
+import React, { useState, useContext } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
-
 import { useRoute } from "@react-navigation/native";
 import { ProductList } from "../Components/ProductList";
+import { GlobalContext } from "./GlobalContext";
+import { PlaceHolderImage } from "../assets/PlaceholderImage";
 
 export function ListingScreen() {
   const route = useRoute();
   const { listing } = route.params;
+  const [state, setState] = useContext(GlobalContext);
 
   return (
     <View>
@@ -16,15 +18,18 @@ export function ListingScreen() {
       <Text style={styles.productDescription}>{listing.publisher}</Text>
       <Text style={styles.productDescription}>{listing.version}</Text>
       <View style={styles.spacing} />
-
-      <ProductList products={listing.itemsForSale}/>
+      <PlaceHolderImage />
+      <ProductList products={listing.itemsForSale} />
       <View style={styles.addToCartButtonContainer}>
-
-      <Button title="Add Listing To Cart" style={styles.addToCartButton} color='pink' onPress={()=> console.log('add')}>
-        {/* <Text>Add Listing To Cart</Text> */}
-      </Button>
+        <Button
+          title="Add Listing To Cart"
+          style={styles.addToCartButton}
+          color="pink"
+          onPress={() => state.functions.addItemToCart(listing)}
+        >
+          {/* <Text>Add Listing To Cart</Text> */}
+        </Button>
       </View>
-
     </View>
   );
 }
@@ -56,11 +61,10 @@ const styles = StyleSheet.create({
     width: 200,
   },
   addToCartButtonContainer: {
-    color:'pink',
+    color: "pink",
     width: 300,
-    marginLeft:'auto',
-    marginRight:'auto',
-    borderRadius:25,
-    
-  }
+    marginLeft: "auto",
+    marginRight: "auto",
+    borderRadius: 25,
+  },
 });
