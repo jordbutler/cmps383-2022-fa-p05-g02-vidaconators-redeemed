@@ -15,9 +15,12 @@ export function MobileAppBar() {
     <View>
       <StatusBar hidden={hidden} />
       <Appbar style={styles.appBar}>
+        <TouchableOpacity onPress={()=> navigation.navigate('Home')}>
+
         <View style={styles.tocoGamesIconContainer}>
           <ToCoGamesImage />
         </View>
+        </TouchableOpacity>
 
         <Text style={styles.appBarText}> Toco Games</Text>
         <TouchableOpacity
