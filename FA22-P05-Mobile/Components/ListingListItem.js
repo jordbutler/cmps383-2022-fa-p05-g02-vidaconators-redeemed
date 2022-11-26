@@ -40,11 +40,15 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     width: 300,
-    borderColor: "#E0E0E0",
-    borderWidth: 7,
+    borderColor: "#69814B",
+    // borderWidth: 4,
+    shadowColor:'#FFEAC2',
+    // shadowOffset:800,
     borderRadius:7,
-    backgroundColor: "#999999",
-    height: windowHeight/3
+    backgroundColor: "white",
+    height: windowHeight/3,
+    elevation: 10
+    
   },
   priceContainer: {
     marginTop:windowHeight/15,

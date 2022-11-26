@@ -30,7 +30,7 @@ export function MobileAppBar() {
           onPress={() => navigation.navigate("MyCart")}
           underlayColor="#DDDDDD"
         >
-          <AntDesign name="shoppingcart" size={34} color="white" />
+          <AntDesign name="shoppingcart" size={34} color="#69814B" />
         </TouchableOpacity>
       </Appbar>
     </View>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   appBar: {
     width: windowWidth,
     color: "#E0E0E0",
-    backgroundColor: '#999999',
+    backgroundColor: '#FFEAC2',
     height: windowHeight / 14,
   },
   appBarText: {
