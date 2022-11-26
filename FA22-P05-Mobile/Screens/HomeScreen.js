@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text } from "react-native";
+import {ScrollView, View, Text, StyleSheet } from "react-native";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -32,8 +32,19 @@ export function HomeScreen({ navigation }) {
   }, []);
 
   return (
-    <View>
+    <ScrollView style={styles.background}>
       <ListingList listings={listings} />
-    </View>
+      <View style={styles.scrollSpacing}/>
+    </ScrollView>
   );
 }
+const styles = StyleSheet.create({
+  scrollSpacing: {
+    height: 30,
+    marginBottom: 5,
+  },
+  background: {
+    backgroundColor: '#2A2D34'
+  }
+
+});

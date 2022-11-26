@@ -9,8 +9,10 @@ const windowHeight = Dimensions.get("window").height;
 import { useNavigation } from "@react-navigation/native";
 
 export function MobileAppBar() {
+
   const navigation = useNavigation();
   let hidden = true;
+  
   return (
     <View>
       <StatusBar hidden={hidden} />
@@ -38,11 +40,12 @@ export function MobileAppBar() {
 const styles = StyleSheet.create({
   appBar: {
     width: windowWidth,
-    color: "White",
+    color: "#E0E0E0",
+    backgroundColor: '#999999',
     height: windowHeight / 14,
   },
   appBarText: {
-    color: "white",
+    color: "#2C2C54",
     marginLeft: "auto",
     marginRight: "auto",
     fontWeight: "bold",
@@ -50,6 +53,7 @@ const styles = StyleSheet.create({
   },
   cartIcon: {
     marginRight: windowWidth / 17,
+    color: '#E0E0E0'
   },
   tocoGamesIconContainer: {
     marginTop: 10,
