@@ -1,27 +1,31 @@
-import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
-
-import { useRoute } from "@react-navigation/native";
-import { ProductList } from "../Components/ProductList";
+import React, { useContext } from "react";
+import { Text, View, StyleSheet, Button } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { CartList } from "../Components/CartList";
+import { GlobalContext } from "./GlobalContext";
 
 export function CartScreen() {
-  const route = useRoute();
-//   const { listing } = route.params;
-
-  return (
-    <View>
-        <Text> MY CART </Text>
-      {/* <Text style={styles.productName}>{listing.name}</Text>
-      <Text style={styles.productDescription}>{listing.startUtc}</Text>
-      <Text style={styles.productDescription}>{`$${listing.price}`}</Text>
-      <Text style={styles.productDescription}>{listing.publisher}</Text>
-      <Text style={styles.productDescription}>{listing.version}</Text>
-      <Text>Total : {PriceTotal}</Text> */}
-      <View style={styles.spacing} />
-
-      {/* <ProductList products={listing.itemsForSale}/> */}
-    </View>
-  );
+  const navigation = useNavigation();
+  const [state, setState] = useContext(GlobalContext);
+  if (state.cartContents.length < 1) {
+    return (
+      <View>
+        <Text>There is nothing currently in your cart</Text>
+        <Button
+          title="Continue Browsing"
+          onPress={() => navigation.navigate("Home")}
+        ></Button>
+      </View>
+    );
+  } else {
+    return (
+      <View>
+        <CartList listings={state.cartContents} />
+        {/* <Text>Total : {PriceTotal}</Text>  */}
+        <View style={styles.spacing} />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
