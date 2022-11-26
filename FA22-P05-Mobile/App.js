@@ -15,21 +15,21 @@ export default function App() {
     <GlobalContextProvider>
       <NavigationContainer>
         <MobileAppBar />
-        <Stack.Navigator headerMode="none">
+        <Stack.Navigator >
           <Stack.Screen
             name="Home"
             component={HomeScreen}
-            options={{ headershown: false }}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="ListingScreen"
             component={ListingScreen}
-            options={{ headershown: false }}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="MyCart"
             component={CartScreen}
-            options={{ headershown: false }}
+            options={{ headerShown: false }}
           />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
         </Stack.Navigator>
