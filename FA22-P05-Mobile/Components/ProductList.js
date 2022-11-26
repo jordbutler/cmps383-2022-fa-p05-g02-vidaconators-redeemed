@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     marginBottom:5
  },
  productListContainer: {
-    marginTop: 100,
+    marginTop: 50,
     marginLeft:'auto',
     marginRight:'auto'
  }

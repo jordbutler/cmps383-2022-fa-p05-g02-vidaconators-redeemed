@@ -1,15 +1,24 @@
 import React, { useContext } from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Button,
+  Dimensions,
+  ScrollView,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { CartList } from "../Components/CartList";
-import { GlobalContext } from "./GlobalContext";
+import { GlobalContext } from "../GlobalContext";
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 export function CartScreen() {
   const navigation = useNavigation();
   const [state, setState] = useContext(GlobalContext);
   if (state.cartContents.length < 1) {
     return (
-      <View>
+      <View style={styles.background}>
         <Text>There is nothing currently in your cart</Text>
         <Button
           title="Continue Browsing"
@@ -19,11 +28,18 @@ export function CartScreen() {
     );
   } else {
     return (
-      <View>
+      <ScrollView style={styles.background}>
         <CartList listings={state.cartContents} />
         {/* <Text>Total : {PriceTotal}</Text>  */}
+        <View style={styles.addToCartButtonContainer}>
+          <Button
+            title="Continue Browsing"
+            color="#69814B"
+            onPress={() => navigation.navigate("Home")}
+          ></Button>
+        </View>
         <View style={styles.spacing} />
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -53,5 +69,17 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 10,
     width: 200,
+  },
+  addToCartButtonContainer: {
+    marginTop: 10,
+    width: 300,
+    marginLeft: "auto",
+    marginRight: "auto",
+    borderRadius: 25,
+    width: windowWidth / 1.8,
+    marginBottom: 14,
+  },
+  background: {
+    backgroundColor: "#2A2D34",
   },
 });

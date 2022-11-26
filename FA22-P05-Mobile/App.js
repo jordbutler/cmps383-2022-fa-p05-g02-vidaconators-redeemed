@@ -7,7 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { ListingScreen } from "./Screens/ListingScreen";
 import { MobileAppBar } from "./Components/MobileAppBar";
 import { CartScreen } from "./Screens/CartScreen";
-import { GlobalContextProvider } from "./Screens/GlobalContext";
+import { GlobalContextProvider } from "./GlobalContext";
 const Stack = createStackNavigator();
 
 export default function App() {

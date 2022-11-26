@@ -1,8 +1,10 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet,Dimensions, } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableHighlight } from "react-native";
-
+import { PlaceHolderImage } from "../assets/PlaceholderImage";
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 export function ListingListItem(props) {
   const navigation = useNavigation();
 
@@ -13,9 +15,15 @@ export function ListingListItem(props) {
       onPress={() =>
         navigation.navigate("ListingScreen", { listing: props.listing })
       }
+      style={styles.itemContainer}
     >
       <View style={styles.productListContainer}>
         <Text style={styles.productName}>{props.listing.name}</Text>
+        <PlaceHolderImage/>
+        <View style={styles.priceContainer}>
+
+        <Text>{`$${props.listing.price}`}</Text>
+        </View>
         <View style={styles.spacing} />
       </View>
     </TouchableHighlight>
@@ -27,24 +35,33 @@ const styles = StyleSheet.create({
     height: 15,
     marginBottom: 5,
   },
-  productListContainer: {
+  itemContainer: {
     marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
     width: 300,
-    borderColor: "#2C2C54",
+    borderColor: "#E0E0E0",
     borderWidth: 7,
-    backgroundColor: "#E0E0E0",
+    borderRadius:7,
+    backgroundColor: "#999999",
+    height: windowHeight/3
+  },
+  priceContainer: {
+    marginTop:windowHeight/15,
+    marginLeft: 'auto',
+    marginRight: "auto"
   },
   productName: {
     marginLeft: "auto",
     marginRight: "auto",
-    color: "#2A2D34",
+    marginTop: windowHeight/35,
+fontWeight:'bold',
+    color: "#2C2C54",
     fontSize: 20,
     letterSpacing: 1,
     lineHeight: 25,
     textAlign: "center",
-    marginBottom: 10,
+    marginBottom: 100,
     width: 200,
   },
   productDescription: {
@@ -56,4 +73,5 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: 200,
   },
+
 });

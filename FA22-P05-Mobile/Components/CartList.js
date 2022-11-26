@@ -21,5 +21,12 @@ const styles = StyleSheet.create({
     marginTop: 100,
     marginLeft: "auto",
     marginRight: "auto",
+    borderWidth: 6,
+    borderColor: '#69814b',
+    backgroundColor: '#E0e0e0'
   },
+  background:{
+
+    backgroundColor: '#E0e0e0'
+  }
 });

@@ -8,9 +8,9 @@ export function ProductListItem(props) {
   return (
   
       <View style={styles.productListContainer}>
-         <Text>{props.product.condition}</Text>
-         <Text>{props.product.owner}</Text>
-         <Text>{props.product.product}</Text>
+         <Text style={styles.productDescription}>{`Condition: ${props.product.condition}`}</Text>
+         <Text style={styles.productDescription}>{props.product.owner}</Text>
+         <Text style={styles.productDescription} >{props.product.product}</Text>
         <Text style={styles.productName}>{props.product.name}</Text>
         <View style={styles.spacing} />
       </View>
@@ -24,13 +24,13 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   productListContainer: {
-    marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
     width: 300,
     borderColor: "#2C2C54",
     borderWidth: 7,
     backgroundColor: "#E0E0E0",
+    height:150
   },
   productName: {
     marginLeft: "auto",
@@ -46,10 +46,11 @@ const styles = StyleSheet.create({
   productDescription: {
     marginLeft: "auto",
     marginRight: "auto",
-    color: "#2A2D34",
+    color: "#2C2C54",
     fontSize: 15,
     textAlign: "center",
     marginBottom: 10,
     width: 200,
+    marginTop:10
   },
 });
