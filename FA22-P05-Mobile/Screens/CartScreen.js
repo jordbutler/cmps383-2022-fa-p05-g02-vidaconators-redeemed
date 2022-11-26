@@ -1,5 +1,12 @@
 import React, { useContext } from "react";
-import { Text, View, StyleSheet, Button, Dimensions, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Button,
+  Dimensions,
+  ScrollView,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { CartList } from "../Components/CartList";
 import { GlobalContext } from "../GlobalContext";
@@ -25,13 +32,12 @@ export function CartScreen() {
         <CartList listings={state.cartContents} />
         {/* <Text>Total : {PriceTotal}</Text>  */}
         <View style={styles.addToCartButtonContainer}>
-
           <Button
-          title="Continue Browsing"
-          color='#69814B'
-          onPress={() => navigation.navigate("Home")}
+            title="Continue Browsing"
+            color="#69814B"
+            onPress={() => navigation.navigate("Home")}
           ></Button>
-          </View>
+        </View>
         <View style={styles.spacing} />
       </ScrollView>
     );
@@ -71,9 +77,9 @@ const styles = StyleSheet.create({
     marginRight: "auto",
     borderRadius: 25,
     width: windowWidth / 1.8,
-    marginBottom: 14
+    marginBottom: 14,
   },
-    background: {
+  background: {
     backgroundColor: "#2A2D34",
   },
 });
