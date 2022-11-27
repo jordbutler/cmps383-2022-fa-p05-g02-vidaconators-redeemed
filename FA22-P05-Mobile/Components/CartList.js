@@ -1,32 +1,25 @@
 import * as React from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 import { CartListItem } from "./CartListItem";
 
 export function CartList(props) {
   return (
-    <View style={styles.productListContainer}>
+    <ScrollView style={styles.productListContainer}>
       {props.listings.map((listing, i) => {
         return <CartListItem listing={listing} key={i} />;
       })}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  spacing: {
-    height: 15,
-    marginBottom: 5,
-  },
   productListContainer: {
-    marginTop: 100,
     marginLeft: "auto",
     marginRight: "auto",
-    borderWidth: 6,
-    borderColor: '#69814b',
-    backgroundColor: '#E0e0e0'
+    backgroundColor: 'white',
+    elevation: 10,
+    shadowColor: "black",
+    shadowOffset:800,
+    borderRadius: 7,
   },
-  background:{
-
-    backgroundColor: '#E0e0e0'
-  }
 });

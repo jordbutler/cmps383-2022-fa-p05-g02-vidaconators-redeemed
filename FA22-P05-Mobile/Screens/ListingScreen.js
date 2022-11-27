@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   ScrollView,
   Text,
@@ -11,12 +11,35 @@ import { useRoute } from "@react-navigation/native";
 import { ProductList } from "../Components/ProductList";
 import { GlobalContext } from "../GlobalContext";
 import { PlaceHolderImage } from "../assets/PlaceholderImage";
+import { AddedToCartModal } from "../Components/AddedToCartModal";
+import { ItemAlreadyInCartModal } from "../Components/ItemAlreadyInCartModal";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
+
 export function ListingScreen() {
   const route = useRoute();
   const { listing } = route.params;
   const [state, setState] = useContext(GlobalContext);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [alreadyInCartModalVisible, setItemAlreadyInCartModalVisible] =
+    useState(false);
+
+  const sendResponse = (result) => {
+    if (result === "listingAdded") {
+      setModalVisible(true);
+    }
+    if (result === "alreadyInCart") {
+      setItemAlreadyInCartModalVisible(true);
+    }
+  };
+  const handleAddToCart = (listing) => {
+    try {
+      const result = state.functions.addItemToCart(listing);
+      sendResponse(result);
+    } catch (e) {}
+    //Todo if successful set modal visible
+    // Todo if unsucceful set already added modal visible
+  };
 
   return (
     <ScrollView style={styles.background}>
@@ -34,11 +57,19 @@ export function ListingScreen() {
             title="Add Listing To Cart"
             style={styles.addToCartButton}
             color="#69814B"
-            onPress={() => state.functions.addItemToCart(listing)}
-          >
-            {/* <Text>Add Listing To Cart</Text> */}
-          </Button>
+            onPress={() => handleAddToCart(listing)}
+          ></Button>
         </View>
+        <AddedToCartModal
+          visible={modalVisible}
+          listingName={listing.name}
+          setModalVisible={setModalVisible}
+        />
+        <ItemAlreadyInCartModal
+          visible={alreadyInCartModalVisible}
+          listingName={listing.name}
+          setModalVisible={setItemAlreadyInCartModalVisible}
+        />
       </View>
     </ScrollView>
   );
@@ -68,7 +99,6 @@ const styles = StyleSheet.create({
     color: "#2C2C54",
     fontSize: 15,
     textAlign: "center",
-    // marginBottom: 10,
     width: 200,
     marginTop: 30,
   },
@@ -79,18 +109,18 @@ const styles = StyleSheet.create({
     marginRight: "auto",
     borderRadius: 25,
     width: windowWidth / 1.8,
-    marginBottom: 14
+    marginBottom: 14,
   },
   background: {
-    backgroundColor: "#2A2D34",
+    backgroundColor: "#f5f5f5",
   },
-  listingContainer: { 
-    backgroundColor: "#E0E0E0", 
-    borderColor: '#69814B',
-    width: windowWidth -50,
-    marginLeft: 'auto', 
-    marginRight: 'auto',
-    marginTop: windowHeight/16,
-    borderWidth: 6
+  listingContainer: {
+    backgroundColor: "white",
+    borderColor: "#69814B",
+    width: windowWidth - 50,
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: windowHeight / 16,
+    borderRadius: 7,
   },
 });
