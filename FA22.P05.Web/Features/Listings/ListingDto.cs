@@ -1,4 +1,5 @@
-﻿using FA22.P05.Web.Features.Items;
+﻿using FA22.P05.Web.Features.ItemListings;
+using FA22.P05.Web.Features.Items;
 
 namespace FA22.P05.Web.Features.Listings;
 
@@ -17,5 +18,5 @@ public class ListingDto
     public string? Catagory { get; set; }
     public DateTimeOffset? StartUtc { get; set; }
     public DateTimeOffset? EndUtc { get; set; }
-    public IEnumerable<ItemDto> ItemsForSale { get; set; }
+    public virtual ICollection<ItemListing> ItemsForSale { get; set; } = new List<ItemListing>();
 }
