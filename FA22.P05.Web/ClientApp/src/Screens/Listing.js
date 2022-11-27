@@ -16,6 +16,7 @@ export function ListingScreen() {
     
     
     const [activeListing, setActiveListing] = useState([{name:'hi', id:1}])
+    
 
 
     useEffect(() => {
@@ -23,9 +24,11 @@ export function ListingScreen() {
         axios.get('api/listings?').then((response) => {
          setActiveListing(response?.data);
         });
+        
 
       }, []);
 
+      
       console.log(activeListing);
       
 
@@ -50,7 +53,7 @@ export function ListingScreen() {
           <CardContent>
             <Typography variant="h5" component="div">
             {x.name}
-            {x.productName}
+            {x.itemsForSale}
             </Typography>
           </CardContent>
           <CardActions>

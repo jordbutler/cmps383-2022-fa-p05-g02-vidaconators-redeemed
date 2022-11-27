@@ -217,7 +217,7 @@ export function WebAppBar() {
           </IconButton>
         </DrawerHeader>
         <Link to="Login"><Button>Login</Button></Link>
-        <Link to="Listing"><Button>Active Listings</Button></Link>
+        <Link to="Listing"><Button>Listings</Button></Link>
         <Link to="Products"><Button>Products</Button></Link>
       </Drawer>
     </Box>
