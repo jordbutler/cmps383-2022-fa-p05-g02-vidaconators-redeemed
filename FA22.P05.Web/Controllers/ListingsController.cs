@@ -48,7 +48,7 @@ namespace FA22.P05.Web.Controllers
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    ItemsForSale = (ICollection<ItemListing>)x.ItemsForSale.Select(y => new ItemDto
+                    ItemsForSale = x.ItemsForSale.Select(y => new ItemDto
                     {
                         Id = y.ItemId,
                         Condition = y.Item.Condition,

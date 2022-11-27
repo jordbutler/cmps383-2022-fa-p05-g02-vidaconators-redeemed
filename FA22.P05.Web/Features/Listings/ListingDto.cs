@@ -18,5 +18,5 @@ public class ListingDto
     public string? Catagory { get; set; }
     public DateTimeOffset? StartUtc { get; set; }
     public DateTimeOffset? EndUtc { get; set; }
-    public virtual ICollection<ItemListing> ItemsForSale { get; set; } = new List<ItemListing>();
+    public IEnumerable<ItemDto> ItemsForSale { get; set; }
 }
