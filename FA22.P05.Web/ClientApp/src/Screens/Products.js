@@ -54,8 +54,7 @@ export function ProductsScreen() {
 
             {!productResponse ? "is null" : <ul>{productResponse.map(x => <li key={x.id}>{x.name}</li>)}</ul>}
             
-            {!productResponse ? "is null" : <Card>{productResponse.map(x => <Card key={x.id}><CardContent><Typography>{x.name}</Typography></CardContent></Card>)}</Card>}
-
+            {!productResponse ? "is null" : <ul>{productResponse.map(x => <Card key={x.id}>{x.name}</Card>)}</ul>}
             
 
 
