@@ -94,6 +94,19 @@ export function ListingScreen() {
       </CardContent>
     </Card>
 
+    {activeResponse.map(x =>
+        <Card key={x.id}>        
+          <CardContent>
+            <Typography variant="h5" component="div">
+            {x.name}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small">Buy</Button>
+          </CardActions>
+        </Card>
+      )}
+
     </Box>
 
             
