@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-
+//import Button from '@mui/material/Button';
+//import CardActions from '@mui/material/CardActions';
 import Box from '@mui/material/Box';
 
 
@@ -94,6 +95,8 @@ export function ListingScreen() {
       </CardContent>
     </Card>
 
+    
+
     {activeResponse.map(x =>
         <Card key={x.id}>        
           <CardContent>
@@ -101,9 +104,6 @@ export function ListingScreen() {
             {x.name}
             </Typography>
           </CardContent>
-          <CardActions>
-            <Button size="small">Buy</Button>
-          </CardActions>
         </Card>
       )}
 

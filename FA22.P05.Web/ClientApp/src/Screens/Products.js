@@ -1,6 +1,9 @@
 import * as React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 import TextField from '@mui/material/TextField';
 
@@ -51,6 +54,7 @@ export function ProductsScreen() {
 
             {!productResponse ? "is null" : <ul>{productResponse.map(x => <li key={x.id}>{x.name}</li>)}</ul>}
             
+            {!productResponse ? "is null" : <Card>{productResponse.map(x => <Card key={x.id}><CardContent><Typography>{x.name}</Typography></CardContent></Card>)}</Card>}
 
             
 
