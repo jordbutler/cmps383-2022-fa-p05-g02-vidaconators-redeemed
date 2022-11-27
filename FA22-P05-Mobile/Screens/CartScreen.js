@@ -28,7 +28,7 @@ export function CartScreen() {
         <View style={styles.textContainer}>
           <Text style={styles.text}>Your Cart is Empty.</Text>
         </View>
-        <View style={styles.addToCartButtonContainer}>
+        <View style={styles.buttonContainer}>
           <Button
             color="#69814B"
             title="Continue Browsing"
