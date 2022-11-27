@@ -219,7 +219,6 @@ export function WebAppBar() {
         <Link to="Login"><Button>Login</Button></Link>
         <Link to="Listing"><Button>Listings</Button></Link>
         <Link to="Products"><Button>Products</Button></Link>
-        <Button Link to="myPage">myPage</Button>
       </Drawer>
     </Box>
   );

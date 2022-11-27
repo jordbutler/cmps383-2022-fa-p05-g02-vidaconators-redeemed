@@ -15,7 +15,7 @@ export function ListingScreen() {
 
     
     
-    const [activeListing, setActiveListing] = useState([{name:'hi', id:1}])
+    const [activeListing, setActiveListing] = useState(null)
     
 
 
