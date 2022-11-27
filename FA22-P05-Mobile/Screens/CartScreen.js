@@ -10,35 +10,51 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { CartList } from "../Components/CartList";
 import { GlobalContext } from "../GlobalContext";
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 export function CartScreen() {
   const navigation = useNavigation();
   const [state, setState] = useContext(GlobalContext);
+
+  //Todo add subtotal
   if (state.cartContents.length < 1) {
     return (
       <View style={styles.background}>
-        <Text>There is nothing currently in your cart</Text>
-        <Button
-          title="Continue Browsing"
-          onPress={() => navigation.navigate("Home")}
-        ></Button>
+        <View style={styles.headerContainer}>
+          <Text style={styles.headerText}>Shopping Cart</Text>
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>Your Cart is Empty.</Text>
+        </View>
+        <View style={styles.addToCartButtonContainer}>
+          <Button
+            color="#69814B"
+            title="Continue Browsing"
+            onPress={() => navigation.navigate("Home")}
+          />
+        </View>
       </View>
     );
   } else {
     return (
       <ScrollView style={styles.background}>
-        <CartList listings={state.cartContents} />
-        {/* <Text>Total : {PriceTotal}</Text>  */}
-        <View style={styles.addToCartButtonContainer}>
-          <Button
-            title="Continue Browsing"
-            color="#69814B"
-            onPress={() => navigation.navigate("Home")}
-          ></Button>
+        <View style={styles.cartContainer}>
+          <View style={styles.headerContainer}>
+            <Text style={styles.headerText}>Shopping Cart</Text>
+          </View>
+          <CartList listings={state.cartContents} />
+          {/* <Text>Total : {PriceTotal}</Text>  */}
+          <View style={styles.buttonContainer}>
+            <Button
+              title="Continue Browsing"
+              color="#69814B"
+              onPress={() => navigation.navigate("Home")}
+            ></Button>
+          </View>
+          <View style={styles.spacing} />
         </View>
-        <View style={styles.spacing} />
       </ScrollView>
     );
   }
@@ -49,29 +65,20 @@ const styles = StyleSheet.create({
     height: 15,
     marginBottom: 5,
   },
-
-  productName: {
+  text: {
+    textAlign: "center",
+    fontSize: 30,
+    color: "#2c2c54",
+  },
+  textContainer: {
+    marginTop: windowHeight / 3,
     marginLeft: "auto",
     marginRight: "auto",
-    color: "#2A2D34",
-    fontSize: 20,
-    letterSpacing: 1,
-    lineHeight: 25,
-    textAlign: "center",
-    marginBottom: 10,
-    width: 200,
+    width: windowWidth / 2,
+    marginBottom: windowHeight / 3.5,
   },
-  productDescription: {
-    marginLeft: "auto",
-    marginRight: "auto",
-    color: "#2A2D34",
-    fontSize: 15,
-    textAlign: "center",
-    marginBottom: 10,
-    width: 200,
-  },
-  addToCartButtonContainer: {
-    marginTop: 10,
+  buttonContainer: {
+    marginTop: 15,
     width: 300,
     marginLeft: "auto",
     marginRight: "auto",
@@ -80,6 +87,19 @@ const styles = StyleSheet.create({
     marginBottom: 14,
   },
   background: {
-    backgroundColor: "#2A2D34",
+    backgroundColor: "#f5f5f5",
+  },
+  headerText: {
+    color: "#2C2C54",
+    alignText: "left",
+    fontWeight: "bold",
+    fontSize: 25,
+  },
+  headerContainer: {
+    marginTop: 30,
+    marginLeft: 37,
+    marginRight: "auto",
+    flex: 1,
+    marginBottom: 5,
   },
 });

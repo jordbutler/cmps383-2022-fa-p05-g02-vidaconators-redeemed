@@ -1,25 +1,32 @@
 import * as React from "react";
 import { useContext } from "react";
-import { View, StyleSheet, Text, Button, Dimensions } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  Button,
+  Dimensions,
+  ScrollView,
+} from "react-native";
 import { ProductList } from "../Components/ProductList";
 import { GlobalContext } from "../GlobalContext";
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 export function CartListItem(props) {
   const [state, setState] = useContext(GlobalContext);
   const listing = props.listing;
+
   return (
-    <View style={styles.listItemContainer}>
+    <ScrollView style={styles.listItemContainer}>
       <Text style={styles.productName}>{listing.name}</Text>
       <Text style={styles.productDescription}>{listing.startUtc}</Text>
       <Text style={styles.productDescription}>{`$${listing.price}`}</Text>
       <Text style={styles.productDescription}>{listing.publisher}</Text>
       <Text style={styles.productDescription}>{listing.version}</Text>
-      <View style={styles.spacing} />
-
       <ProductList products={listing.itemsForSale} />
-      <View style={styles.addToCartButtonContainer}>
+      <View style={styles.buttonContainer}>
         <Button
           title="Remove From Cart"
           color="#2c2c54"
@@ -27,8 +34,9 @@ export function CartListItem(props) {
           onPress={() => state.functions.removeItemFromCart(listing)}
         />
       </View>
-      <View style={styles.addToCartButtonContainer}></View>
-    </View>
+      <View style={styles.buttonContainer}></View>
+      <View style={styles.spacing} />
+    </ScrollView>
   );
 }
 
@@ -36,16 +44,6 @@ const styles = StyleSheet.create({
   spacing: {
     height: 15,
     marginBottom: 5,
-  },
-  productListContainer: {
-    marginTop: 100,
-    marginLeft: "auto",
-    marginRight: "auto",
-  },
-  priceContainer: {
-    marginTop: windowHeight / 15,
-    marginLeft: "auto",
-    marginRight: "auto",
   },
   productName: {
     marginLeft: "auto",
@@ -69,9 +67,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: 200,
   },
-  addToCartButtonContainer: {
+  buttonContainer: {
     marginTop: 10,
-    width: 300,
     marginLeft: "auto",
     marginRight: "auto",
     borderRadius: 25,
