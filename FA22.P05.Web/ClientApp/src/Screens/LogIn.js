@@ -1,8 +1,9 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
-import Button from '@mui/material/Button';
 import axios from 'axios';
+import Button from '@mui/material/Button';
+
 
 
 
@@ -29,6 +30,8 @@ export function LoginScreen() {
       axios.post('/api/authentication/login', {userName: username, password: password});
   
   };
+
+  
   
   
 
@@ -36,20 +39,25 @@ export function LoginScreen() {
 
         <div color="Red">
 
+          
+
         
 
         <form className="form" onSubmit={handleLogin}>
-          <TextField
-            type="text"
+          Username:<TextField
+            type="username"
             className="form-control"
-            name="username"
+            name="Username"
             value={username}
             onChange={onChangeUsername}
           />
-          <TextField
+          <br></br>
+          <br></br>
+          
+          &emsp;&emsp;&emsp;&emsp;Password:<TextField
             type="password"
             className="form-control"
-            name="password"
+            name="Password"
             value={password}
             onChange={onChangePassword}
           />
