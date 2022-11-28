@@ -85,13 +85,13 @@ export function ListingScreen() {
         
       />
           <CardContent>
-            <Typography>
+            <Typography gutterBottom variant="h5" component="div">
               {x.name}
             </Typography>
             <Typography>
               {x.price}
             </Typography>
-            <Typography>
+            <Typography variant="body2" color="text.secondary">
               {x.itemsForSale.map(x => <li key={x.id}>{x.productName}</li>)}
             </Typography>
           </CardContent>
