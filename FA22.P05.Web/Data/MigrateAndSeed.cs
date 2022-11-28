@@ -40,7 +40,7 @@ public static class MigrateAndSeed
         {
             EndUtc = DateTimeOffset.UtcNow.AddDays(3),
             Owner = context.Set<User>().FirstOrDefault(),
-            Name = "Nintendo",
+            Name = "Nintendo Games",
             Price = 50.99m,
             StartUtc = DateTimeOffset.UtcNow,
             ItemsForSale = new List<ItemListing>
@@ -82,7 +82,7 @@ public static class MigrateAndSeed
         {
             EndUtc = DateTimeOffset.UtcNow.AddDays(3),
             Owner = context.Set<User>().FirstOrDefault(),
-            Name = "PS5",
+            Name = "PlayStation Games",
             Price = 70.99m,
             StartUtc = DateTimeOffset.UtcNow,
             ItemsForSale = new List<ItemListing>
@@ -124,7 +124,7 @@ public static class MigrateAndSeed
         {
             EndUtc = DateTimeOffset.UtcNow.AddDays(3),
             Owner = context.Set<User>().FirstOrDefault(),
-            Name = "Xbox",
+            Name = "Xbox Games",
             Price = 45.99m,
             StartUtc = DateTimeOffset.UtcNow,
             ItemsForSale = new List<ItemListing>
@@ -155,6 +155,50 @@ public static class MigrateAndSeed
                     {
                         Condition = "Brand New",
                         Product = context.Set<Product>().Where(x => x.Name == "Sunset Overdrive").FirstOrDefault(),
+                        Owner = context.Set<User>().FirstOrDefault(),
+                    }
+
+                },
+            }
+
+        });
+        context.SaveChanges();
+
+        listings.Add(new Listing
+        {
+            EndUtc = DateTimeOffset.UtcNow.AddDays(3),
+            Owner = context.Set<User>().FirstOrDefault(),
+            Name = "PC Games",
+            Price = 55.99m,
+            StartUtc = DateTimeOffset.UtcNow,
+            ItemsForSale = new List<ItemListing>
+            {
+                new ItemListing
+                {
+                    Item = new Item
+                    {
+                        Condition = "Brand New",
+                        Product = context.Set<Product>().Where(x => x.Name == "Rust").FirstOrDefault(),
+                        Owner = context.Set<User>().FirstOrDefault(),
+                    }
+
+                },
+                new ItemListing
+                {
+                    Item = new Item
+                    {
+                        Condition = "Brand New",
+                        Product = context.Set<Product>().Where(x => x.Name == "World of Warcraft").FirstOrDefault(),
+                        Owner = context.Set<User>().FirstOrDefault(),
+                    }
+
+                },
+                new ItemListing
+                {
+                    Item = new Item
+                    {
+                        Condition = "Brand New",
+                        Product = context.Set<Product>().Where(x => x.Name == "Sims 4").FirstOrDefault(),
                         Owner = context.Set<User>().FirstOrDefault(),
                     }
 
@@ -224,6 +268,21 @@ public static class MigrateAndSeed
         {
             Name = "Dead Space",
             Description = "Physical Copy",
+        });
+        products.Add(new Product
+        {
+            Name = "Rust",
+            Description = "Digital",
+        });
+        products.Add(new Product
+        {
+            Name = "World of Warcraft",
+            Description = "Digital",
+        });
+        products.Add(new Product
+        {
+            Name = "Sims 4",
+            Description = "Digital",
         });
         context.SaveChanges();
     }
