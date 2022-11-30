@@ -214,10 +214,10 @@ public static class MigrateAndSeed
     private static void AddProducts(DataContext context)
     {
         var products = context.Set<Product>();
-        if (products.Any())
+       /* if (products.Any())
         {
             return;
-        }
+        }*/
 
         products.Add(new Product
         {
